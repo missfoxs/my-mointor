@@ -24,9 +24,10 @@ const checkResourceStatus = async url => {
     const response = await fetch(url);
     const status = response.status;
     if (status >= 200 && status < 300) {
-      return true;
+      return status;
     } else {
-      return false;
+      console.log(`${url} 请求失败，状态码：${status}`);
+      return status;
     }
   } catch (e) {
     console.log(e);
@@ -34,6 +35,7 @@ const checkResourceStatus = async url => {
   }
 };
 
+
 module.exports = {
-  checkResourceStatus
+  checkResourceStatus,
 };
